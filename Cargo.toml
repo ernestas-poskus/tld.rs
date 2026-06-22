@@ -12,7 +12,7 @@ repository = "https://github.com/pagescrape/tld.rs"
 version = "2.37.0"
 
 [dependencies]
-phf = "0.11.2"
+phf = "0.14.0"
 
 [build-dependencies]
 phf_codegen = "0.11.2"
