@@ -5,10 +5,10 @@ description = """
 Top Level domain static hash map, tld list is obtained from of iana.org
 """
 documentation = "https://docs.rs/tld"
-homepage = "https://github.com/pagescrape/tld.rs"
+homepage = "https://github.com/ernestas-poskus/tld.rs"
 license = "BSD-3-Clause"
 name = "tld"
-repository = "https://github.com/pagescrape/tld.rs"
+repository = "https://github.com/ernestas-poskus/tld.rs"
 version = "2.38.0"
 
 edition = "2021"
@@ -22,4 +22,3 @@ phf = { version = "0.11", default-features = false }
 
 [build-dependencies]
 phf_codegen = "0.11"
-
