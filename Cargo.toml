@@ -9,7 +9,7 @@ homepage = "https://github.com/ernestas-poskus/tld.rs"
 license = "BSD-3-Clause"
 name = "tld"
 repository = "https://github.com/ernestas-poskus/tld.rs"
-version = "2.38.0"
+version = "2.39.0"
 
 edition = "2021"
 rust-version = "1.70"
