@@ -1,4 +1,4 @@
-// Auto generated 2025-11-10 20:19:51 +0200
+// Auto generated 2026-09-08 11:10:17 +0300
 extern crate phf_codegen;
 
 use std::env;
@@ -507,7 +507,6 @@ fn main() {
             .entry("gold")
             .entry("goldpoint")
             .entry("golf")
-            .entry("goo")
             .entry("goodyear")
             .entry("goog")
             .entry("google")
@@ -763,6 +762,7 @@ fn main() {
             .entry("memorial")
             .entry("men")
             .entry("menu")
+            .entry("merck")
             .entry("merckmsd")
             .entry("mg")
             .entry("mh")
@@ -1254,6 +1254,7 @@ fn main() {
             .entry("watches")
             .entry("weather")
             .entry("weatherchannel")
+            .entry("web")
             .entry("webcam")
             .entry("weber")
             .entry("website")
@@ -1271,7 +1272,6 @@ fn main() {
             .entry("wine")
             .entry("winners")
             .entry("wme")
-            .entry("wolterskluwer")
             .entry("woodside")
             .entry("work")
             .entry("works")
