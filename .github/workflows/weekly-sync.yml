@@ -1,0 +1,69 @@
+name: Weekly Update & Publish
+
+on:
+  schedule:
+    # Run every Monday at 00:00 UTC
+    - cron: '0 0 * * 1'
+  workflow_dispatch:
+
+jobs:
+  update-and-publish:
+    name: Sync TLDs and Publish
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Install Rust toolchain
+        uses: dtolnay/rust-toolchain@stable
+        with:
+          components: rustfmt
+
+      - name: Install cargo-edit
+        run: cargo install cargo-edit --locked
+
+      - name: Install Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.2'
+
+      - name: Generate updated build.rs
+        run: ./generate
+
+      - name: Check for changes in build.rs
+        id: git-diff
+        run: |
+          git diff --exit-code build.rs || echo "changed=true" >> $GITHUB_OUTPUT
+
+      - name: Test generated code
+        if: steps.git-diff.outputs.changed == 'true'
+        run: |
+          cargo test --verbose
+
+      - name: Bump minor version and commit
+        if: steps.git-diff.outputs.changed == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+          cargo set-version --bump minor
+          NEW_VERSION=$(cargo metadata --no-deps --format-version 1 | jq -r '.packages[0].version')
+
+          IANA_VERSION=$(curl -s https://data.iana.org/TLD/tlds-alpha-by-domain.txt | head -n 1 | sed 's/# //')
+
+          git add Cargo.toml Cargo.lock build.rs
+          git commit -m "chore(release): v${NEW_VERSION} - ${IANA_VERSION}"
+          git tag "v${NEW_VERSION}"
+          git push origin master --tags
+
+      - name: Publish to crates.io
+        if: steps.git-diff.outputs.changed == 'true'
+        env:
+          CARGO_REGISTRY_TOKEN: ${{ secrets.CARGO_REGISTRY_TOKEN }}
+        run: |
+          cargo publish --token "$CARGO_REGISTRY_TOKEN"

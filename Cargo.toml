@@ -11,8 +11,15 @@ name = "tld"
 repository = "https://github.com/pagescrape/tld.rs"
 version = "2.38.0"
 
+edition = "2021"
+rust-version = "1.70"
+readme = "README.md"
+keywords = ["tld", "domain", "iana", "validation", "lookup"]
+categories = ["network-programming", "web-programming", "data-structures"]
+
 [dependencies]
-phf = "0.11.2"
+phf = { version = "0.11", default-features = false }
 
 [build-dependencies]
-phf_codegen = "0.11.2"
+phf_codegen = "0.11"
+
