@@ -56,7 +56,7 @@ jobs:
 
           IANA_VERSION=$(curl -s https://data.iana.org/TLD/tlds-alpha-by-domain.txt | head -n 1 | sed 's/# //')
 
-          git add Cargo.toml Cargo.lock build.rs
+          git add Cargo.toml build.rs
           git commit -m "chore(release): v${NEW_VERSION} - ${IANA_VERSION}"
           git tag "v${NEW_VERSION}"
           git push origin master --tags
