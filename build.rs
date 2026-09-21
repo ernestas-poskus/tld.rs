@@ -1,4 +1,4 @@
-// Auto generated 2026-09-08 11:11:40 +0300
+// Auto generated 2026-09-21 04:26:33 +0000
 extern crate phf_codegen;
 
 use std::env;
