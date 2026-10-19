@@ -2,8 +2,8 @@ name: Weekly Update & Publish
 
 on:
   schedule:
-    # Run every Monday at 00:00 UTC
-    - cron: '0 0 * * 1'
+    # Run once a month
+    - cron: '0 0 1 * *'
   workflow_dispatch:
 
 jobs:
