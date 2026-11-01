@@ -1,4 +1,4 @@
-// Auto generated 2026-10-19 04:11:24 +0000
+// Auto generated 2026-11-01 03:10:46 +0000
 extern crate phf_codegen;
 
 use std::env;
@@ -543,7 +543,6 @@ fn main() {
             .entry("health")
             .entry("healthcare")
             .entry("help")
-            .entry("helsinki")
             .entry("here")
             .entry("hermes")
             .entry("hiphop")
